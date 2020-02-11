@@ -128,3 +128,49 @@ class BinarySearchTree {
         }
     }
 }
+
+// What does this program do?
+// Without running this code in your code editor, explain what the following program does. Show with an example the result of executing this program. What is the runtime of this algorithm?
+
+// function tree(t){
+//     if(!t){
+//         return 0;
+//     }
+//     return tree(t.left) + t.value + tree(t.right)
+// }
+// ======ANSWER=======
+// function to sum all values in the tree
+
+// Height of a BST
+// Write an algorithm to find the height of a binary search tree. What is the time complexity of your algorithm?
+function height(tree) {
+    if (tree === null) {
+        return 0;
+    }
+
+    let leftHeight = height(tree.left);
+    let rightHeight = height(tree.right);
+
+    if (leftHeight > rightHeight) {
+        return leftHeight + 1;
+    } else {
+        return rightHeight + 1;
+    }
+}
+
+// 3rd largest node
+// Write an algorithm to find the 3rd largest node in a binary search tree.
+function thirdLargestNode(tree) {
+    if (!tree.right) {
+        if (tree.left !== null) {
+            return tree.parent;
+        }
+        if (!tree.left) {
+            if (!tree.parent) {
+                return tree;
+            }
+            return tree.parent.left;
+        }
+    }
+    return thirdLargestNode(tree.right);
+}
